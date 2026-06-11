@@ -121,3 +121,4 @@ status: status==="active"?"inactive":"active"
 
 loadMasterDashboard();
 }
+const PAYMENT_LINK = "r https://mpago.la/2uksRdV";
