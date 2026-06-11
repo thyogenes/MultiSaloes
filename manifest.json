@@ -1,0 +1,15 @@
+{
+  "name": "Nails SaaS",
+  "short_name": "Nails",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c9527a",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/616/616494.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
