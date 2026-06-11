@@ -9,7 +9,9 @@ document.getElementById("loginBox").style.display="none";
 document.getElementById("masterDashboard").style.display="block";
 loadMasterDashboard();
 })
-.catch(()=>alert("Erro no login"));
+.catch((error)=>{
+alert("Erro: " + error.message);
+});
 }
 
 async function loadMasterDashboard(){
