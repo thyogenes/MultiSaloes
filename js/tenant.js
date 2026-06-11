@@ -1,22 +1,27 @@
 let currentSalon = null;
 
-async function loadSalon() {
-  const salonId = getSalonIdFromURL();
-  if (!salonId) return;
+async function loadSalon(){
 
-  const doc = await db.collection("salons").doc(salonId).get();
+const salonId = getSalonIdFromURL();
 
-  if (!doc.exists) {
-    document.body.innerHTML = "<h2>Salão não encontrado</h2>";
-    return;
-  }
+if(!salonId){
+document.body.innerHTML = "<h2>Salão não encontrado</h2>";
+return;
+}
 
-  currentSalon = doc.data();
+const doc = await db.collection("salons").doc(salonId).get();
 
-  if (currentSalon.status !== "active") {
-    document.body.innerHTML = "<h2>Plano vencido. Contate o administrador.</h2>";
-    return;
-  }
+if(!doc.exists){
+document.body.innerHTML = "<h2>Salão inexistente</h2>";
+return;
+}
 
-  document.title = currentSalon.name;
+currentSalon = doc.data();
+currentSalon.id = salonId;
+
+if(currentSalon.status !== "active"){
+document.body.innerHTML = "<h2>Plano vencido. Contate o administrador.</h2>";
+return;
+}
+
 }
