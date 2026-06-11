@@ -120,12 +120,23 @@ status: status==="active"?"inactive":"active"
 });
 
 loadMasterDashboard();
-}
-const PAYMENT_LINK = "r https://mpago.la/2uksRdV";
-function generatePaymentLink(salonId){
+html += `
+<div style="border-bottom:1px solid #ddd;padding:10px;">
+<b>${d.name}</b><br>
+Status: ${d.status}<br>
+Plano: R$${d.price}<br>
+Vencimento: ${d.dueDate}<br>
 
-const url = PAYMENT_LINK + "?reference=" + salonId;
+<button onclick="toggleStatus('${doc.id}','${d.status}')">
+${d.status==="active"?"Desativar":"Ativar"}
+</button>
 
-window.open(url,"_blank");
+<button onclick="generatePaymentLink('${doc.id}')">
+Gerar Link Pagamento
+</button>
 
-}
+<button onclick="confirmPayment('${doc.id}')">
+Confirmar Pagamento
+</button>
+</div>
+`;
