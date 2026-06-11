@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nails SaaS</title>
+<title>Agendamento</title>
 
 <link rel="stylesheet" href="/css/style.css">
 <link rel="manifest" href="/manifest.json">
@@ -11,10 +11,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 
 <script src="/js/firebase.js"></script>
 <script src="/js/utils.js"></script>
 <script src="/js/tenant.js"></script>
+<script src="/js/booking.js"></script>
 </head>
 
 <body>
@@ -24,22 +26,70 @@
 </header>
 
 <div class="container">
-  <div class="card">
-    <p>Este será o sistema de agendamento do salão.</p>
-  </div>
+
+<div class="card">
+<h2>Escolha o Serviço</h2>
+<select id="service">
+<option value="110">Alongamento natural esmaltada - R$110</option>
+<option value="110">BabyBommer Acrílico (Quadrada) - R$110</option>
+<option value="110">Babycollor Acrílico (Quadrada) - R$110</option>
+<option value="110">Babyglitter Acrílico (Quadrada) - R$110</option>
+<option value="100">Banho de acrílico + esmaltação - R$100</option>
+<option value="10">Filha única Encapsulada (Par) - R$10</option>
+<option value="10">Formatos (Bailarina, Stilleto, Almond) - R$10</option>
+<option value="100">Francesa reversa no banho de acrílico - R$100</option>
+<option value="130">Francesa reversa (Quadrada) - R$130</option>
+<option value="80">Manutenções - R$80</option>
+<option value="120">Mix Artes diferentes - R$120</option>
+<option value="90">Natural Acrílico (Quadrada) - R$90</option>
+<option value="50">Pedicure com esmaltação em gel - R$50</option>
+<option value="25">Remoção - R$25</option>
+<option value="50">Blindagem (Esmaltação gel natural) - R$50</option>
+</select>
+</div>
+
+<div class="card">
+<h2>Data</h2>
+<input type="date" id="date">
+</div>
+
+<div class="card">
+<h2>Horário</h2>
+<select id="time">
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+</select>
+</div>
+
+<div class="card">
+<input type="text" id="name" placeholder="Seu nome">
+<input type="tel" id="phone" placeholder="WhatsApp">
+<button onclick="book()">Confirmar Agendamento</button>
+</div>
+
+<h2>Galeria</h2>
+<div id="gallery" class="gallery"></div>
+
 </div>
 
 <script>
 loadSalon().then(() => {
-  if(currentSalon){
-    document.getElementById("salonName").innerText = currentSalon.name;
-  }
+if(currentSalon){
+document.getElementById("salonName").innerText = currentSalon.name;
+loadGallery();
+}
 });
 </script>
 
 <script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js');
+navigator.serviceWorker.register('/sw.js');
 }
 </script>
 
