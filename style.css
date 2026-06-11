@@ -1,0 +1,94 @@
+/* DASHBOARD */
+.dashboard-cards {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.dash-card {
+background: white;
+padding: 15px;
+border-radius: 12px;
+text-align: center;
+box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dash-label {
+display: block;
+font-size: 12px;
+color: #888;
+margin-bottom: 5px;
+}
+
+.dash-value {
+font-size: 22px;
+font-weight: bold;
+color: #c9527a;
+}
+
+/* APPOINTMENTS */
+.appointment-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 12px;
+border-bottom: 1px solid #eee;
+}
+
+.appt-price {
+color: #c9527a;
+font-weight: bold;
+}
+
+.appt-actions {
+flex-shrink: 0;
+}
+
+/* BLOCKED */
+.blocked-item {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px 0;
+border-bottom: 1px solid #eee;
+font-size: 14px;
+}
+
+/* BUTTONS */
+.btn-danger {
+background: #e74c3c;
+color: white;
+border: none;
+padding: 8px 15px;
+border-radius: 6px;
+cursor: pointer;
+width: auto;
+}
+
+.btn-small {
+padding: 5px 10px;
+font-size: 12px;
+width: auto;
+border-radius: 5px;
+}
+
+/* GALLERY */
+.gallery {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+
+.gallery-item {
+position: relative;
+}
+
+.gallery-item img {
+width: 100%;
+border-radius: 10px;
+}
+
+.gallery-item button {
+margin-top: 5px;
+}
