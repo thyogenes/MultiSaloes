@@ -2,26 +2,63 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel Master</title>
+
 <link rel="stylesheet" href="/css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <script src="/js/firebase.js"></script>
+<script src="/js/master.js"></script>
 </head>
 
 <body>
 
 <header>
-  <h1>Painel Master</h1>
+<h1>Painel Master SaaS</h1>
 </header>
 
 <div class="container">
-  <div class="card">
-    <p>Gestão de salões será implementada no próximo bloco.</p>
-  </div>
+
+<div id="loginBox" class="card">
+<h2>Login Master</h2>
+<input type="email" id="masterEmail" placeholder="Email">
+<input type="password" id="masterPassword" placeholder="Senha">
+<button onclick="masterLogin()">Entrar</button>
+</div>
+
+<div id="masterDashboard" style="display:none;">
+
+<div class="card">
+<h2>Resumo Geral</h2>
+<p>Total geral faturado: R$ <span id="globalRevenue">0</span></p>
+<p>Total de salões: <span id="totalSalons">0</span></p>
+<p>Salões ativos: <span id="activeSalons">0</span></p>
+<p>Salões inadimplentes: <span id="inactiveSalons">0</span></p>
+</div>
+
+<div class="card">
+<h2>Criar Novo Salão</h2>
+<input type="text" id="salonId" placeholder="ID do salão (ex: studioana)">
+<input type="text" id="salonName" placeholder="Nome do salão">
+<input type="text" id="ownerName" placeholder="Nome da dona">
+<input type="text" id="whatsapp" placeholder="WhatsApp">
+<input type="date" id="dueDate">
+<button onclick="createSalon()">Criar Salão</button>
+</div>
+
+<div class="card">
+<h2>Lista de Salões</h2>
+<div id="salonsList"></div>
+</div>
+
+</div>
+
 </div>
 
 </body>
