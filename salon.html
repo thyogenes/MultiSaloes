@@ -2,27 +2,143 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel do Salão</title>
+
 <link rel="stylesheet" href="/css/style.css">
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script src="/js/firebase.js"></script>
 </head>
 
 <body>
 
+<!-- LOGIN -->
+<div id="loginSection" class="container">
 <header>
-  <h1>Painel do Salão</h1>
+<h1>Painel do Salão</h1>
+</header>
+
+<div class="card">
+<h2>Login</h2>
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Senha">
+<input type="text" id="salonId" placeholder="ID do salão (ex: lindanails)">
+<button onclick="doLogin()">Entrar</button>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardSection" style="display:none">
+
+<header>
+<h1 id="dashTitle">Painel</h1>
+<button onclick="doLogout()" style="width:auto;padding:8px 20px;margin-top:10px">Sair</button>
 </header>
 
 <div class="container">
-  <div class="card">
-    <p>Dashboard será implementado no próximo bloco.</p>
-  </div>
+
+<!-- CARDS FINANCEIROS -->
+<div class="dashboard-cards">
+
+<div class="dash-card">
+<span class="dash-label">Faturamento Total</span>
+<span class="dash-value" id="totalRevenue">R$ 0</span>
 </div>
+
+<div class="dash-card">
+<span class="dash-label">Faturamento Mês</span>
+<span class="dash-value" id="monthRevenue">R$ 0</span>
+</div>
+
+<div class="dash-card">
+<span class="dash-label">Faturamento Hoje</span>
+<span class="dash-value" id="todayRevenue">R$ 0</span>
+</div>
+
+<div class="dash-card">
+<span class="dash-label">Total Agendamentos</span>
+<span class="dash-value" id="totalCount">0</span>
+</div>
+
+<div class="dash-card">
+<span class="dash-label">Agendamentos Hoje</span>
+<span class="dash-value" id="todayCount">0</span>
+</div>
+
+<div class="dash-card">
+<span class="dash-label">Ticket Médio</span>
+<span class="dash-value" id="avgTicket">R$ 0</span>
+</div>
+
+</div>
+
+<!-- GRÁFICO -->
+<div class="card">
+<h2>Faturamento Mensal</h2>
+<canvas id="revenueChart"></canvas>
+</div>
+
+<!-- FILTRO -->
+<div class="card">
+<h2>Filtrar por Data</h2>
+<input type="date" id="filterDate">
+<button onclick="filterByDate()">Filtrar</button>
+<button onclick="loadAllData()" style="background:#666;margin-top:5px">Mostrar Todos</button>
+</div>
+
+<!-- LISTA AGENDAMENTOS -->
+<div class="card">
+<h2>Agendamentos</h2>
+<div id="appointmentsList"></div>
+</div>
+
+<!-- BLOQUEAR HORÁRIO -->
+<div class="card">
+<h2>Bloquear Horário Manual</h2>
+<input type="date" id="blockDate">
+<select id="blockTime">
+<option>09:00</option>
+<option>10:00</option>
+<option>11:00</option>
+<option>13:00</option>
+<option>14:00</option>
+<option>15:00</option>
+<option>16:00</option>
+<option>17:00</option>
+</select>
+<button onclick="blockSlot()">Bloquear</button>
+</div>
+
+<!-- HORÁRIOS BLOQUEADOS -->
+<div class="card">
+<h2>Horários Bloqueados</h2>
+<div id="blockedList"></div>
+</div>
+
+<!-- UPLOAD FOTOS -->
+<div class="card">
+<h2>Adicionar Foto</h2>
+<input type="file" id="photoFile" accept="image/*">
+<button onclick="uploadPhoto()">Enviar Foto</button>
+</div>
+
+<!-- GALERIA ADMIN -->
+<div class="card">
+<h2>Galeria</h2>
+<div id="adminGallery" class="gallery"></div>
+</div>
+
+</div>
+</div>
+
+<script src="/js/salon.js"></script>
 
 </body>
 </html>
