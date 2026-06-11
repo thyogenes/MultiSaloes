@@ -122,3 +122,10 @@ status: status==="active"?"inactive":"active"
 loadMasterDashboard();
 }
 const PAYMENT_LINK = "r https://mpago.la/2uksRdV";
+function generatePaymentLink(salonId){
+
+const url = PAYMENT_LINK + "?reference=" + salonId;
+
+window.open(url,"_blank");
+
+}
