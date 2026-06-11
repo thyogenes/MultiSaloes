@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/s/(.*)", "dest": "/index.html" },
+    { "src": "/salon", "dest": "/salon.html" },
+    { "src": "/master", "dest": "/master.html" }
+  ]
+}
