@@ -140,3 +140,17 @@ Confirmar Pagamento
 </button>
 </div>
 `;
+async function confirmPayment(salonId){
+
+const newDue = new Date();
+newDue.setMonth(newDue.getMonth()+1);
+
+await db.collection("salons").doc(salonId).update({
+status:"active",
+dueDate:newDue.toISOString().split("T")[0]
+});
+
+alert("Pagamento confirmado e vencimento atualizado!");
+
+loadMasterDashboard();
+}
