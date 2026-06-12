@@ -352,4 +352,39 @@ await db.collection("gallery")
 .delete();
 
 loadAdminGallery();
+  async function saveCustomization(){
+
+const primaryColor = document.getElementById("primaryColor").value;
+const backgroundColor = document.getElementById("backgroundColor").value;
+
+let logoUrl = null;
+let bannerUrl = null;
+
+const logoFile = document.getElementById("logoFile").files[0];
+const bannerFile = document.getElementById("bannerFile").files[0];
+
+if(logoFile){
+const logoRef = firebase.storage().ref("logos/"+salonId);
+await logoRef.put(logoFile);
+logoUrl = await logoRef.getDownloadURL();
+}
+
+if(bannerFile){
+const bannerRef = firebase.storage().ref("banners/"+salonId);
+await bannerRef.put(bannerFile);
+bannerUrl = await bannerRef.getDownloadURL();
+}
+
+const updateData = {
+primaryColor,
+backgroundColor
+};
+
+if(logoUrl) updateData.logoUrl = logoUrl;
+if(bannerUrl) updateData.bannerUrl = bannerUrl;
+
+await db.collection("salons").doc(salonId).update(updateData);
+
+alert("Personalização salva!");
+}
 }
