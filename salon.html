@@ -92,7 +92,24 @@
 <label>Imagem de Capa</label>
 <input type="file" id="bannerFile">
 
-<button onclick="saveCustomization()">Salvar Personalização</button>
+<button async function saveCustomization(){
+
+const updateData = {
+primaryColor: document.getElementById("primaryColor").value,
+backgroundColor: document.getElementById("backgroundColor").value,
+template: document.getElementById("template").value,
+fontFamily: document.getElementById("fontFamily").value,
+buttonStyle: document.getElementById("buttonStyle").value,
+aboutText: document.getElementById("aboutText").value,
+address: document.getElementById("address").value,
+instagram: document.getElementById("instagram").value
+};
+
+await db.collection("salons").doc(salonId).update(updateData);
+
+alert("Layout atualizado!");
+}
+  
 </div>
 
 <!-- GRÁFICO -->
