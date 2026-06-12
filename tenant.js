@@ -1,6 +1,7 @@
 let currentSalon = null;
 
-async function loadSalon(){
+async function loadSalon()applyTemplate();
+applyContent();{ 
 
 const salonId = getSalonIdFromURL();
 
