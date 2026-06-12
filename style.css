@@ -92,3 +92,34 @@ border-radius: 10px;
 .gallery-item button {
 margin-top: 5px;
 }
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #f8e1ea, #f3f6ff);
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(135deg, #c9527a, #a63d61);
+  color: white;
+  padding: 30px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
